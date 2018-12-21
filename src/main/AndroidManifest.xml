@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.qiyi.newdfulibrary">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+
+        <service
+            android:name=".HanddeviceFOTAService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".HandDeviceRec"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
+                <action android:name="com.longcheer.net.action.readyForOTA" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".DfuService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".NotificationActivity"></activity>
+    </application>
+
+</manifest>
